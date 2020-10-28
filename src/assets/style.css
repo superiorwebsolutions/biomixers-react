@@ -1,0 +1,106 @@
+
+body {
+    padding: 0 !important;
+    overflow:visible!important;
+}
+
+.calculating{
+    z-index:99999;border:2px solid black;text-align:center;font-weight:bold;font-size:36px;display:none;background:gray;border-radius:10px;padding:3%;position:absolute;left:35%;top:40%;width:30%;
+}
+
+.calculating div{
+    font-size:16px;
+    margin-top:20px;
+}
+
+.event-result-wrapper{
+    background: rgb(252, 252, 252);
+    float: left;
+    width: 31%;
+    border: 2px solid lightgray;
+    margin: 0 1%;
+    position: relative;
+    margin-bottom: 20px;
+    min-height:550px;
+
+}
+.header-title{
+    margin-top:30px;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+
+.event-result-body{
+    padding:15px 20px;
+}
+
+.event-result-wrapper .count{
+    font-size: 2rem;
+    padding: 0;
+    height: 100%;
+    background: lightgray;
+    width: 65px;
+    display: block;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.event-result-header{
+    width: 100%;
+    position:relative;
+    border-bottom: 3px solid lightgray;
+    z-index:10;
+}
+
+.restaurant-list{
+    width:40%;float:left;font-weight:bold;font-size:14px;margin-bottom:3px;
+    max-height: 85px;
+    overflow-y: auto;
+}
+
+.member-list{
+    width:100%;
+    overflow-y: auto;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.placed{
+    position: absolute;
+    top: 15px;
+    display: block;
+    left: 0;
+    right:0;
+    margin:auto;
+    color: green;
+    line-height:100%;
+}
+
+
+.day-time{
+    font-weight:bold;font-size:16px;
+}
+
+.unplaced-members{
+
+    max-height:27px;
+    overflow-y:auto;
+    margin-bottom: 40px;
+    max-height: 1000px;
+}
+
+.header-text{
+    width:98%;float:left;clear:both;text-align:center;font-size:30px;background:#333333;padding:1%;margin:20px 0px;color:whitesmoke;
+}
+.unplaced-members-title{
+    font-weight:bold;
+}
+.unplaced-members-wrapper{
+    margin: auto;
+    margin-top:25px;
+    font-size: .9rem;
+}
+.met-others-count{
+    font-size:.8em;
+}

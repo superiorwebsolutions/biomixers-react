@@ -3,7 +3,7 @@ import moment from "moment"
 import ServiceApi from "../../services/ServiceApi";
 import FinalEventCollection from "./FinalEventCollection"
 
-import MemberModal from "./MemberModal";
+import MembersAttendingModal from "./MembersAttendingModal";
 import {Button, Modal} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -49,10 +49,16 @@ class ResultsComponent extends Component{
     }
 
     refreshResults(){
+        this.setState({
+            loading: true
+        })
         ServiceApi.getAllMembers()
             .then(
                 response => {
-                    this.setState({results: response.data})
+                    this.setState({
+                        results: response.data,
+                        loading: false
+                    })
                 }
             )
     }
@@ -64,7 +70,20 @@ class ResultsComponent extends Component{
 
     render(){
 
-        return <div>
+        return (
+            <>
+                <Modal className="modal loading-modal" show={this.state.loading}>
+
+                    <Modal.Body>
+
+                        Loading results..
+
+                    </Modal.Body>
+
+
+
+                </Modal>
+
             <h1 className="header-title">BIOmixers Event Generator</h1>
 
             <Button onClick={this.refreshResults}>Refresh Results</Button>
@@ -101,7 +120,8 @@ class ResultsComponent extends Component{
             </div>
 
 
-        </div>
+        </>
+        )
     }
 }
 

@@ -1,9 +1,7 @@
-import React, {Component, useState} from "react";
-import PropTypes from 'prop-types';
-import "../../assets/modal.css"
+import React, {Component} from "react";
 import {Button, Modal} from 'react-bootstrap';
 
-class MemberModal extends Component{
+class MembersAttendingModal extends Component{
 
     constructor(props){
         super(props);
@@ -36,8 +34,9 @@ class MemberModal extends Component{
 
                 <Modal className="modal" show={this.state.show} onHide={this.hideModal}>
 
-                    <Modal.Body>
+                    <Modal.Title>{this.props.count} Members Attending</Modal.Title>
 
+                    <Modal.Body>
                         {
                             Object.values(membersAttending).map(member =>
 
@@ -45,8 +44,6 @@ class MemberModal extends Component{
 
                             )
                         }
-
-
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -55,11 +52,10 @@ class MemberModal extends Component{
                         </Button>
                     </Modal.Footer>
 
-
                 </Modal>
             </>
         )
 
     }
 }
-export default MemberModal
+export default MembersAttendingModal

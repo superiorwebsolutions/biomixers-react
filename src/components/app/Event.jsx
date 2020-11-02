@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import MemberModal from "./MemberModal";
+import MembersAttendingModal from "./MembersAttendingModal";
 
 class Event extends Component{
     constructor(props) {
@@ -28,10 +28,7 @@ class Event extends Component{
                 </div>
 
                 <div className="member-list">
-                    <MemberModal data={membersAttending} index={event.configId} count={event.count}></MemberModal>
-
-
-
+                    <MembersAttendingModal data={membersAttending} index={event.configId} count={event.count}></MembersAttendingModal>
                 </div>
             </div>
         )

@@ -83,11 +83,7 @@ body {
 }
 
 .unplaced-members{
-
-    max-height:27px;
-    overflow-y:auto;
-    margin-bottom: 40px;
-    max-height: 1000px;
+    margin-bottom: 20px;
 }
 
 .header-text{
@@ -103,4 +99,35 @@ body {
 }
 .met-others-count{
     font-size:.8em;
+}
+
+.modal{
+    top: 20%!important;
+}
+.modal-title{
+    padding: 15px;
+    padding-bottom: 0;
+    font-size: 1.3rem!important;
+}
+.modal-body{
+    padding-top: 0.4rem;
+}
+
+.loading-modal{
+    top:20%!important;
+    width:700px;
+    height: 200px;
+    line-height:200px;
+    font-size:50px;
+    text-align: center;
+
+}
+.loading-modal .modal-content{
+    background: whitesmoke;
+}
+.modal-content{
+    border: 2px solid #eaeaea!important
+}
+.modal-backdrop.show{
+    opacity:0!important;
 }

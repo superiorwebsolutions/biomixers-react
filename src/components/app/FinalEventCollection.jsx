@@ -1,10 +1,12 @@
 import React, {Component} from "react";
 import '../../assets/style.css';
 import Event from "./Event";
-import MemberModal from "./MemberModal";
+import MembersAttendingModal from "./MembersAttendingModal";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Modal} from "react-bootstrap";
+import MembersUnplacedModal from "./MembersUnplacedModal";
 
 
 class FinalEventCollection extends Component{
@@ -51,14 +53,7 @@ class FinalEventCollection extends Component{
 
                     {item.numUnplacedInt != 0 &&
                     <div className="unplaced-members-wrapper">
-
-                        <div className="unplaced-members-title">{item.numUnplacedInt} members have not been placed:
-                        </div>
-
-                        <div className="unplaced-members">
-                            {membersUnplacedString}
-                        </div>
-
+                        <MembersUnplacedModal membersUnplaced={membersUnplacedString} numUnplacedInt={item.numUnplacedInt}></MembersUnplacedModal>
                     </div>
                     }
 

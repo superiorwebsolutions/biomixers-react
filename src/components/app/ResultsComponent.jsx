@@ -7,6 +7,8 @@ import MembersAttendingModal from "./MembersAttendingModal";
 import {Button, Modal} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from "./NavBar";
+import NavForm from "./NavForm";
 
 
 
@@ -15,36 +17,27 @@ class ResultsComponent extends Component{
     constructor(props){
         super(props)
         this.state = {
-            results: []
+            results: [],
+            searchFilterQuery: {
+                minAllowedPerRestaurant: 6,
+                maxAllowedPerRestaurant: 16,
+                numDaysOfAvailability: 4,
+                numFoodPreferences: 3,
+                percentageOfMembersMet: 25,
+                randomizeResults: false
+            }
+
         }
 
+        this.applySearchFilterQuery = this.applySearchFilterQuery.bind(this);
         this.refreshResults = this.refreshResults.bind(this);
+        this.updateState = this.updateState.bind(this);
+
+
     }
 
 
     componentDidMount(){
-
-
-        //
-        // ServiceApi.getAllMembers().then(
-        //     response =>{
-        //         console.log(response)
-        //     }
-        //
-        // )
-        /*
-        ServiceApi.getAllMembers().then(
-            response => this.setState({
-                results: response.data
-                // description: response.data.description,
-                // targetDate: moment(response.data.targetDate).format('YYYY-MM-DD')
-            })
-
-        )
-
-         */
-
-
 
     }
 
@@ -54,14 +47,50 @@ class ResultsComponent extends Component{
         })
         ServiceApi.getAllMembers()
             .then(
-                response => {
+                (response) => {
                     this.setState({
                         results: response.data,
                         loading: false
                     })
+                    console.log("CHECK STATE")
+                    console.log(this.state);
                 }
             )
     }
+
+    applySearchFilterQuery(){
+
+        ServiceApi.applySearchFilterQuery(this.state.searchFilterQuery).then(
+            (response) => {
+
+                console.log(response);
+                this.refreshResults();
+            }
+
+        );
+    }
+
+    updateState(event){
+
+        let value
+        if(event.target.type === 'checkbox')
+            value = event.target.checked
+        else
+            value = event.target.value
+
+        let name = event.target.name;
+
+        this.setState(prevState => (
+            {
+                searchFilterQuery: {
+                    ...prevState.searchFilterQuery,
+                    [name]: value
+                }
+            }
+        ));
+    }
+
+
 
 
 
@@ -84,16 +113,20 @@ class ResultsComponent extends Component{
 
                 </Modal>
 
-            <h1 className="header-title">BIOmixers Event Generator</h1>
 
-            <Button onClick={this.refreshResults}>Refresh Results</Button>
+
+
 
             <br /><br />
 
-            {/* TODO:  create loading popup */}
 
 
             <div className="container">
+
+                <h1 className="header-title">BIOmixers Event Generator</h1>
+                <Button onClick={this.refreshResults}>Refresh Results</Button>
+                <NavForm searchFilterQuery={this.state.searchFilterQuery} updateState={this.updateState} applySearchFilterQuery={this.applySearchFilterQuery}></NavForm>
+                <NavBar></NavBar>
 
                 {
                     this.state.results.map(

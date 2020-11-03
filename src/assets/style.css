@@ -4,15 +4,6 @@ body {
     overflow:visible!important;
 }
 
-.calculating{
-    z-index:99999;border:2px solid black;text-align:center;font-weight:bold;font-size:36px;display:none;background:gray;border-radius:10px;padding:3%;position:absolute;left:35%;top:40%;width:30%;
-}
-
-.calculating div{
-    font-size:16px;
-    margin-top:20px;
-}
-
 .event-result-wrapper{
     background: rgb(252, 252, 252);
     float: left;
@@ -51,6 +42,8 @@ body {
     position:relative;
     border-bottom: 3px solid lightgray;
     z-index:10;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .restaurant-list{
@@ -67,14 +60,9 @@ body {
 }
 
 .placed{
-    position: absolute;
-    top: 15px;
-    display: block;
-    left: 0;
-    right:0;
-    margin:auto;
     color: green;
-    line-height:100%;
+    line-height: 50px;
+    margin: auto;
 }
 
 
@@ -96,6 +84,9 @@ body {
     margin: auto;
     margin-top:25px;
     font-size: .9rem;
+}
+.placed{
+    font-weight: bold;
 }
 .met-others-count{
     font-size:.8em;

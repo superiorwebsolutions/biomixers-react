@@ -32,16 +32,20 @@ class FinalEventCollection extends Component{
             <div className="event-result-wrapper">
 
                 <div className="event-result-header">
-                    <div className="count">{index}</div>
 
-                    <strong className="placed">{item.htmlPlaced}</strong>
+                    <div className="count float-left">{index}</div>
+
+                    <div className="placed float-right">{item.htmlPlaced}</div>
+
 
 
                 </div>
 
                 <div className="event-result-body">
-                    {item.maxActiveConfigs} (max_active_configs)<br />
-                    {item.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />
+
+                    {/*{item.maxActiveConfigs} (max_active_configs)<br />*/}
+                    {/*{item.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />*/}
+
                     Total PMC: {item.totalPmc}
                     <br />
                     {

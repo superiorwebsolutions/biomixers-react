@@ -3,6 +3,9 @@ body {
     padding: 0 !important;
     overflow:visible!important;
 }
+.results-wrapper{
+    margin-top:30px;
+}
 
 .event-result-wrapper{
     background: rgb(252, 252, 252);
@@ -121,4 +124,18 @@ body {
 }
 .modal-backdrop.show{
     opacity:0!important;
+}
+
+
+.form-group{
+    width:300px;
+    display:inline-block;
+}
+.form-control{
+    width: 50px!important;
+    margin: auto;
+}
+#submit{
+    display: block;
+    margin: auto;
 }

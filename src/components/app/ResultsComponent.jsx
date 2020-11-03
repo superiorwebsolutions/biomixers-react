@@ -7,7 +7,6 @@ import MembersAttendingModal from "./MembersAttendingModal";
 import {Button, Modal} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from "./NavBar";
 import NavForm from "./NavForm";
 
 
@@ -102,32 +101,24 @@ class ResultsComponent extends Component{
         return (
             <>
                 <Modal className="modal loading-modal" show={this.state.loading}>
-
                     <Modal.Body>
-
                         Loading results..
-
                     </Modal.Body>
-
-
-
                 </Modal>
 
 
 
 
 
-            <br /><br />
-
-
-
             <div className="container">
 
                 <h1 className="header-title">BIOmixers Event Generator</h1>
-                <Button onClick={this.refreshResults}>Refresh Results</Button>
-                <NavForm searchFilterQuery={this.state.searchFilterQuery} updateState={this.updateState} applySearchFilterQuery={this.applySearchFilterQuery}></NavForm>
-                <NavBar></NavBar>
 
+                {/*<Button onClick={this.refreshResults}>Refresh Results</Button>*/}
+
+                <NavForm searchFilterQuery={this.state.searchFilterQuery} updateState={this.updateState} applySearchFilterQuery={this.applySearchFilterQuery}></NavForm>
+
+                <div className="results-wrapper">
                 {
                     this.state.results.map(
                         (result, index) =>{
@@ -148,6 +139,7 @@ class ResultsComponent extends Component{
                         }
                     )
                 }
+                </div>
 
 
             </div>

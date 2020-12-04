@@ -8,6 +8,8 @@ import {Button, Modal} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavForm from "./NavForm";
+import axios from "axios";
+import {API_URL} from "../../Constants";
 
 
 
@@ -33,11 +35,20 @@ class ResultsComponent extends Component{
         this.updateState = this.updateState.bind(this);
 
 
+
+
+
     }
 
 
     componentDidMount(){
+        ServiceApi.initialGetAllMembers().then(
+            (response) => {
+                console.log("Loaded Initial Members")
+                console.log(response)
 
+            }
+        )
     }
 
     refreshResults(){
@@ -51,8 +62,6 @@ class ResultsComponent extends Component{
                         results: response.data,
                         loading: false
                     })
-                    console.log("CHECK STATE")
-                    console.log(this.state);
                 }
             )
     }
@@ -98,55 +107,68 @@ class ResultsComponent extends Component{
 
     render(){
 
-        return (
-            <>
+        if(this.state.results == []){
+            return (
                 <Modal className="modal loading-modal" show={this.state.loading}>
                     <Modal.Body>
                         Loading results..
                     </Modal.Body>
                 </Modal>
+            )
+        }
+        else {
+
+            // console.log(this.state.results)
+            return (
+                <>
+                    <Modal className="modal loading-modal" show={this.state.loading}>
+                        <Modal.Body>
+                            Loading results..
+                        </Modal.Body>
+                    </Modal>
 
 
+                    <div className="container">
+
+                        <h1 className="header-title">BIOmixers Event Generator</h1>
+
+                        {/*<Button onClick={this.refreshResults}>Refresh Results</Button>*/}
+
+                        <NavForm searchFilterQuery={this.state.searchFilterQuery} updateState={this.updateState}
+                                 applySearchFilterQuery={this.applySearchFilterQuery}></NavForm>
+
+                        <div className="results-wrapper">
+                            {
+                                this.state.results.map(
+                                    (result, index) => {
 
 
+                                        if ((index) % 3 == 0 && index != 0)
+                                            return (
+                                                <>
+                                                    <div style={{clear: 'both'}}></div>
+                                                    <FinalEventCollection key={index} data={result}
+                                                                          index={index + 1}></FinalEventCollection>
+                                                </>
 
-            <div className="container">
-
-                <h1 className="header-title">BIOmixers Event Generator</h1>
-
-                {/*<Button onClick={this.refreshResults}>Refresh Results</Button>*/}
-
-                <NavForm searchFilterQuery={this.state.searchFilterQuery} updateState={this.updateState} applySearchFilterQuery={this.applySearchFilterQuery}></NavForm>
-
-                <div className="results-wrapper">
-                {
-                    this.state.results.map(
-                        (result, index) =>{
-
-
-                            if((index) % 3 == 0 && index != 0)
-                                return(
-                                    <>
-                                    <div style={{clear:'both'}}></div>
-                                    <FinalEventCollection key={index} data={result} index={index + 1}></FinalEventCollection>
-                                    </>
-
+                                            )
+                                        else
+                                            return (
+                                                <FinalEventCollection key={index} data={result}
+                                                                      index={index + 1}></FinalEventCollection>
+                                            )
+                                    }
                                 )
-                            else
-                                return(
-                                    <FinalEventCollection key={index} data={result} index={index + 1}></FinalEventCollection>
-                                )
-                        }
-                    )
-                }
-                </div>
+                            }
+                        </div>
 
 
-            </div>
+                    </div>
 
 
-        </>
-        )
+                </>
+            )
+        }
     }
 }
 

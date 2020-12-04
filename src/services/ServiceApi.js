@@ -4,15 +4,16 @@ import {API_URL, JPA_API_URL} from "../Constants";
 
 class ServiceApi{
 
+    initialGetAllMembers(){
+        return axios.get(`${API_URL}/initial`)
+    }
 
     getAllMembers(){
         return axios.get(`${API_URL}/final`)
     }
 
     applySearchFilterQuery(postData){
-        let data = Object.assign({}, postData);
-
-        console.log(data)
+        let data = Object.assign({}, postData)
 
         let percentageOfMembersMet = data["percentageOfMembersMet"]
 
@@ -20,6 +21,15 @@ class ServiceApi{
             data["percentageOfMembersMet"] = percentageOfMembersMet * .01;
 
         return axios.post(`${API_URL}/filter`, data)
+    }
+
+
+
+    saveFinalEventCollection(postData){
+        let data = Object.assign({}, postData)
+
+        return axios.post(`${API_URL}/final-event-collection`, data)
+
     }
 /*
     deleteTodoById(name, id){

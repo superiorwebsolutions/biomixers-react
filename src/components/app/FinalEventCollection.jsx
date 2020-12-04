@@ -7,6 +7,7 @@ import MembersAttendingModal from "./MembersAttendingModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Modal} from "react-bootstrap";
 import MembersUnplacedModal from "./MembersUnplacedModal";
+import ServiceApi from "../../services/ServiceApi";
 
 
 class FinalEventCollection extends Component{
@@ -16,17 +17,20 @@ class FinalEventCollection extends Component{
     }
 
     render() {
-        let item = this.props.data;
+        console.log("render loaded")
+        let finalEventCollection = this.props.data;
         let index = this.props.index;
 
         let membersUnplaced = [];
 
-        Object.values(item.membersPlacedList).map(member => {
+        Object.values(finalEventCollection.membersPlacedList).map(member => {
                 membersUnplaced.push(member.fullName);
             }
         )
 
         let membersUnplacedString = membersUnplaced.join(', ');
+
+
         return (
             
             <div className="event-result-wrapper">
@@ -35,7 +39,7 @@ class FinalEventCollection extends Component{
 
                     <div className="count float-left">{index}</div>
 
-                    <div className="placed float-right">{item.htmlPlaced}</div>
+                    <div className="placed float-right">{finalEventCollection.htmlPlaced}</div>
 
 
 
@@ -43,21 +47,32 @@ class FinalEventCollection extends Component{
 
                 <div className="event-result-body">
 
-                    {/*{item.maxActiveConfigs} (max_active_configs)<br />*/}
-                    {/*{item.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />*/}
+                    <Button onClick={() => {
+                        ServiceApi.saveFinalEventCollection(finalEventCollection)
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    }}>Run This Event</Button>
 
-                    Total PMC: {item.totalPmc}
+                    {/*{finalEventCollection.maxActiveConfigs} (max_active_configs)<br />*/}
+                    {/*{finalEventCollection.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />*/}
+
+                    <br />
+                    <div>Total PMC: {finalEventCollection.totalPmc}</div>
                     <br />
                     {
-                        Object.keys(item.configTree).map(key =>
-                            <Event key={key} data={item.configTree[key]}></Event>
+                        Object.keys(finalEventCollection.configTree).map(key =>
+                            <Event key={key} data={finalEventCollection.configTree[key]}></Event>
                         )
                     }
 
 
-                    {item.numUnplacedInt != 0 &&
+                    {finalEventCollection.numUnplacedInt != 0 &&
                     <div className="unplaced-members-wrapper">
-                        <MembersUnplacedModal membersUnplaced={membersUnplacedString} numUnplacedInt={item.numUnplacedInt}></MembersUnplacedModal>
+                        <MembersUnplacedModal membersUnplaced={membersUnplacedString} numUnplacedInt={finalEventCollection.numUnplacedInt}></MembersUnplacedModal>
                     </div>
                     }
 

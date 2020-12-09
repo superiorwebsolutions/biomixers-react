@@ -66,7 +66,7 @@ class NavForm extends Component {
                         <Form.Control name="randomizeResults" type="checkbox" value={this.props.searchFilterQuery.randomizeResults} onChange={this.handleChange} />
 
                         <Form.Label>Percentage Members Met:</Form.Label>
-                        <Form.Control name="percentageOfMembersMet" type="text" value={this.props.searchFilterQuery.percentageOfMembersMet} onChange={this.handleChange} />
+                        <Form.Control className="percentageOfMembersMet" name="percentageOfMembersMet" type="text" value={this.props.searchFilterQuery.percentageOfMembersMet} onChange={this.handleChange} />
                     </Form.Group>
 
                     <Button id="submit" variant="primary" type="submit">

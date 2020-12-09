@@ -23,6 +23,10 @@ class ServiceApi{
         return axios.post(`${API_URL}/filter`, data)
     }
 
+    getSearchFilterQuery(){
+        return axios.get(`${API_URL}/search-filter-query`)
+    }
+
 
 
     saveFinalEventCollection(postData){

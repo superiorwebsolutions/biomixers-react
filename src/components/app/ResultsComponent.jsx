@@ -20,12 +20,12 @@ class ResultsComponent extends Component{
         this.state = {
             results: [],
             searchFilterQuery: {
-                minAllowedPerRestaurant: 6,
-                maxAllowedPerRestaurant: 16,
-                numDaysOfAvailability: 4,
-                numFoodPreferences: 3,
-                percentageOfMembersMet: 25,
-                randomizeResults: false
+                // minAllowedPerRestaurant: 6,
+                // maxAllowedPerRestaurant: 16,
+                // numDaysOfAvailability: 4,
+                // numFoodPreferences: 3,
+                // percentageOfMembersMet: 25,
+                // randomizeResults: false
             }
 
         }
@@ -41,15 +41,34 @@ class ResultsComponent extends Component{
     }
 
 
+// Not using this because we have to reload member data each time anyway
     componentDidMount(){
-        ServiceApi.initialGetAllMembers().then(
+
+        ServiceApi.getSearchFilterQuery().then(
             (response) => {
-                console.log("Loaded Initial Members")
-                console.log(response)
+
+                this.setState({
+                    searchFilterQuery: response.data
+                })
+
+                ServiceApi.initialGetAllMembers().then(
+                    (response) => {
+                        console.log("Loaded Initial Members")
+                        console.log(response)
+
+                    }
+                ).catch(function (error) {
+                    // handle error
+                    console.log(error)
+                })
 
             }
         )
+
+
+
     }
+
 
     refreshResults(){
         this.setState({

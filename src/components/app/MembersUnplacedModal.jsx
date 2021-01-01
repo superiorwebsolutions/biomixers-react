@@ -29,7 +29,7 @@ class MembersUnplacedModal extends Component{
 
 
 
-                <Button variant="outline-info" size="sm" onClick={this.showModal}>
+                <Button variant="outline-primary" size="sm" onClick={this.showModal}>
                     <div className="unplaced-members-title">View {numUnplacedInt} unplaced members</div>
                 </Button>
 

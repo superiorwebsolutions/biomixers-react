@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavForm from "./NavForm";
 import axios from "axios";
 import {API_URL} from "../../Constants";
+import LoadingModal from "./LoadingModal";
 
 
 
@@ -128,11 +129,7 @@ class ResultsComponent extends Component{
 
         if(this.state.results == []){
             return (
-                <Modal className="modal loading-modal" show={this.state.loading}>
-                    <Modal.Body>
-                        Loading results..
-                    </Modal.Body>
-                </Modal>
+                <LoadingModal loading={this.state.loading}></LoadingModal>
             )
         }
         else {
@@ -140,11 +137,7 @@ class ResultsComponent extends Component{
             // console.log(this.state.results)
             return (
                 <>
-                    <Modal className="modal loading-modal" show={this.state.loading}>
-                        <Modal.Body>
-                            Loading results..
-                        </Modal.Body>
-                    </Modal>
+                    <LoadingModal loading={this.state.loading}></LoadingModal>
 
 
                     <div className="container">

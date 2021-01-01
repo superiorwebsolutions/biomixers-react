@@ -72,7 +72,7 @@ class NavForm extends Component {
                     </Form.Group>
 
                     <Button id="submit" variant="primary" type="submit">
-                        Submit
+                        Generate Events
                     </Button>
 
                 </Form>

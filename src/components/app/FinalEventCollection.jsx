@@ -31,6 +31,21 @@ class FinalEventCollection extends Component{
         let membersUnplacedString = membersUnplaced.join(', ');
 
 
+        // Sort results by day of week
+        let daysOfWeekList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+
+        let resultsList = []
+
+        for(let dayName of daysOfWeekList){
+            Object.keys(finalEventCollection.configTree).map(key => {
+                if (finalEventCollection.configTree[key].dayOfWeek == dayName) {
+                    resultsList.push({key: key, configTree: finalEventCollection.configTree[key]})
+                }
+            }
+        )}
+
+
+
         return (
             
             <div className="event-result-wrapper">
@@ -48,7 +63,7 @@ class FinalEventCollection extends Component{
                 <div className="event-result-body">
 
 
-                    // TODO:  Uncomment this to allow saving of event collections
+                    {/* TODO:  Uncomment this to allow saving of event collections*/}
                     {/*<Button onClick={() => {*/}
                     {/*    ServiceApi.saveFinalEventCollection(finalEventCollection)*/}
                     {/*        .then(function (response) {*/}
@@ -63,13 +78,21 @@ class FinalEventCollection extends Component{
                     {/*{finalEventCollection.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />*/}
 
                     <br />
-                    <div>Total PMC: {finalEventCollection.totalPmc}</div>
+                    <div>{finalEventCollection.totalPmc} member interactions</div>
                     <br />
-                    {
-                        Object.keys(finalEventCollection.configTree).map(key =>
-                            <Event key={key} data={finalEventCollection.configTree[key]}></Event>
-                        )
-                    }
+
+
+
+                        {[...resultsList].map((resultObj, i) =>
+
+                            <Event key={resultObj.key} data={resultObj.configTree}></Event>
+
+                        )}
+
+
+
+
+
 
 
                     {finalEventCollection.numUnplacedInt != 0 &&

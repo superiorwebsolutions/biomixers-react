@@ -28,9 +28,9 @@ class MembersAttendingModal extends Component{
 
 
 
-                <Button variant="secondary" size="sm" onClick={this.showModal}>
+                <a className="members-attending-link" variant="secondary" size="sm" onClick={this.showModal}>
                     View {this.props.count} Members Attending
-                </Button>
+                </a>
 
                 <Modal className="modal" show={this.state.show} onHide={this.hideModal}>
 

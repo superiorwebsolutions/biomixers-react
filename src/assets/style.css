@@ -2,6 +2,8 @@
 body {
     padding: 0 !important;
     overflow:visible!important;
+    font-family: "Open Sans", sans-serif!important;
+    color: #333;
 }
 .results-wrapper{
     margin-top:30px;
@@ -19,9 +21,9 @@ body {
 
 }
 .header-title{
-    margin-top:30px;
-    margin-bottom:20px;
-    font-size:2rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
 }
 
 
@@ -63,14 +65,15 @@ body {
 }
 
 .placed{
-    color: green;
+    color: #333;
     line-height: 50px;
     margin: auto;
+    font-weight:500;
 }
 
 
 .day-time{
-    font-weight:bold;font-size:16px;
+    font-weight:500;font-size:16px;
 }
 
 .unplaced-members{
@@ -87,9 +90,6 @@ body {
     margin: auto;
     margin-top:25px;
     font-size: .9rem;
-}
-.placed{
-    font-weight: bold;
 }
 .met-others-count{
     font-size:.8em;
@@ -109,10 +109,10 @@ body {
 
 .loading-modal{
     top:20%!important;
-    width:700px;
-    height: 200px;
+    width:670px;
+    height: 90px;
     line-height:200px;
-    font-size:50px;
+    font-size:40px;
     text-align: center;
 
 }
@@ -141,4 +141,15 @@ body {
 }
 .percentageOfMembersMet{
     width:58px!important;
+}
+.form-label{
+    display: inline-block;
+    margin-bottom: .2rem;
+    margin-top: .5rem;
+}
+.members-attending-link{
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor:pointer;
 }

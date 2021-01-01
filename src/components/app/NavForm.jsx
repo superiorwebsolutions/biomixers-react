@@ -30,24 +30,26 @@ class NavForm extends Component {
         return (
             <>
 
-                <Navbar bg="light" expand="lg">
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
+                {/*<Navbar bg="light" expand="lg">*/}
+                {/*    <Navbar.Toggle aria-controls="basic-navbar-nav" />*/}
+                {/*    <Navbar.Collapse id="basic-navbar-nav">*/}
+                {/*        <Nav className="mr-auto">*/}
+                {/*            <Nav.Link href="#home">Home</Nav.Link>*/}
+                {/*            <Nav.Link href="#link">Link</Nav.Link>*/}
 
-                            {/*<Button onClick={this.refreshResults}>Refresh Results</Button>*/}
+                {/*            /!*<Button onClick={this.refreshResults}>Refresh Results</Button>*!/*/}
 
-                        </Nav>
-
-
+                {/*        </Nav>*/}
 
 
-                    </Navbar.Collapse>
 
 
-                </Navbar>
+                {/*    </Navbar.Collapse>*/}
+
+
+                {/*</Navbar>*/}
+
+
                 <Form onSubmit={this.handleSubmit}>
 
                     <Form.Group controlId="restaurantBounds">

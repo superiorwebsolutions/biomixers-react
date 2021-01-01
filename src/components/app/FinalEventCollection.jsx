@@ -47,15 +47,17 @@ class FinalEventCollection extends Component{
 
                 <div className="event-result-body">
 
-                    <Button onClick={() => {
-                        ServiceApi.saveFinalEventCollection(finalEventCollection)
-                            .then(function (response) {
-                                console.log(response);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
-                    }}>Run This Event</Button>
+
+                    // TODO:  Uncomment this to allow saving of event collections
+                    {/*<Button onClick={() => {*/}
+                    {/*    ServiceApi.saveFinalEventCollection(finalEventCollection)*/}
+                    {/*        .then(function (response) {*/}
+                    {/*            console.log(response);*/}
+                    {/*        })*/}
+                    {/*        .catch(function (error) {*/}
+                    {/*            console.log(error);*/}
+                    {/*        });*/}
+                    {/*}}>Run This Event</Button>*/}
 
                     {/*{finalEventCollection.maxActiveConfigs} (max_active_configs)<br />*/}
                     {/*{finalEventCollection.maxMembersAllowedPerRestaurant} (max_members_allowed_per_restaurant)<br /><br />*/}
